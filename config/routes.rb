@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'home/land'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#land'
+
+  resources :languages, only: [:index, :new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

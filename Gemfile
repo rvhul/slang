@@ -14,14 +14,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem 'simple_form'
 
 
 group :development, :test do
   gem 'byebug'
+  gem 'annotate'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
