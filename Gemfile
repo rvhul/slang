@@ -13,17 +13,20 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'simple_form'
+gem 'devise'
 
 
 group :development, :test do
   gem 'byebug'
   gem 'annotate'
+
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem "letter_opener"
 
 end
 

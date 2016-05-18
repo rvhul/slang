@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def landing_page?
+    controller_name == 'home' && action_name == 'land'
+  end
+
   def flash_messages_tag
     #     <% flash.each do |fl| %>
     #   <div class="alert alert-<%=fl[0] %> alert-dismissible" role="alert">  
