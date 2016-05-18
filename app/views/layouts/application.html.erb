@@ -9,7 +9,7 @@
 </head>
 <body>
 <%= render 'common/header' unless landing_page? %>
-<div class =<% "container" unless landing_page? %>>
+<div class =<%= "container" unless landing_page? %>>
   <%= yield %>
 </div>
 
