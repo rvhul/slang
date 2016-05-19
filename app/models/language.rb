@@ -10,5 +10,6 @@
 #
 
 class Language < ActiveRecord::Base
-  
+  belongs_to :users
+  validates :user, presence: true
 end

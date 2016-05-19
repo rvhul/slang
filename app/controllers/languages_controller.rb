@@ -18,18 +18,15 @@ class LanguagesController < ApplicationController
   end
 
   def show
-
+    @coaching = Coaching.new
   end
 
+private
+    def language_params
+      params.require(:language).permit(:name, :description)
+    end
 
-
-  private
-      def language_params
-        params.require(:language).permit(:name, :description)
-      end 
-
-      def fetch_language
-        @language = Language.find(params[:id])
-
-      end
+    def fetch_language
+      @language = Language.find(params[:id])
+    end
 end

@@ -11,14 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518094126) do
+ActiveRecord::Schema.define(version: 20160519111620) do
+
+  create_table "coachings", force: :cascade do |t|
+    t.integer  "pupil_id"
+    t.integer  "mentor_id"
+    t.integer  "language_id"
+    t.boolean  "accepted",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "coachings", ["accepted"], name: "index_coachings_on_accepted"
+  add_index "coachings", ["language_id"], name: "index_coachings_on_language_id"
+  add_index "coachings", ["mentor_id"], name: "index_coachings_on_mentor_id"
+  add_index "coachings", ["pupil_id"], name: "index_coachings_on_pupil_id"
 
   create_table "languages", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
+
+  add_index "languages", ["user_id"], name: "index_languages_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

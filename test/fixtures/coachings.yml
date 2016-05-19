@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pupil_id: 
+  mentor_id: 
+  language_id: 
+  accepted: MyString
+
+two:
+  pupil_id: 
+  mentor_id: 
+  language_id: 
+  accepted: MyString

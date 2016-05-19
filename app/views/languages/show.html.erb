@@ -1,1 +1,25 @@
 <%= @language.name %>
+
+
+<%= link_to "Add A Lang-Pal!", "#", class:"btn btn-success pull-right", data:{toggle:"modal", target:"#choosepalModal"} %>
+
+
+
+
+<!-- choose langpal Modal -->
+<div class="modal fade" id="choosepalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choose a Lang-Pal</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@language, @coaching], remote: true do |f|%>
+        <%= f.input :mentor_email, required: true  %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
-  
-  devise_for :users 
+
+  get 'coachings/create'
+
+  devise_for :users
 
   authenticated :user do
   root to: 'languages#index', as: :authenticated_root
   end
 
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # user_root 'languages#index' 
+  # user_root 'languages#index'
   root 'home#land'
 
-  resources :languages, only: [:index, :new, :create, :show]
+  resources :languages, only: [:index, :new, :create, :show] do
+    resources :coachings, only: [:create]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
