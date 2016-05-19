@@ -10,6 +10,8 @@
 #
 
 class Language < ActiveRecord::Base
-  belongs_to :users
+  has_many :coachings
+  has_many :users, through: :coachings
+  # belongs_to :user
   validates :user, presence: true
 end

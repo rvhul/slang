@@ -1,0 +1,5 @@
+en:
+  flash_messages:
+    coachings:
+      already_invited: "This mentor is pending your request"
+      invite_success: "Mentor successfully invited"

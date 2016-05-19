@@ -16,7 +16,8 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@language, @coaching], remote: true do |f|%>
-        <%= f.input :mentor_email, required: true  %>
+        <div class="alert alert-danger hidden" role="alert">Please enter a valid email address</div>
+        <%= f.input :mentor_email, label: 'Enter Mentor Email you like to learn from', placeholder: 'user@domain.com' %>
         <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>

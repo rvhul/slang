@@ -16,6 +16,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'devise'
+gem 'devise_invitable'
+gem 'ValidateEmail'
 
 
 group :development, :test do

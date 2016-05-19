@@ -26,5 +26,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :languages
+  has_many :coachings
+  has_many :languages, through: :coachings
+
+  def teaching?(lang)
+    Coaching.where(language: lang, mentor: self.id).any?
+  end
 end

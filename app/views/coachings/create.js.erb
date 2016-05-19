@@ -1,0 +1,10 @@
+$('#choosepalModal .alert-danger').addClass('hidden');
+<% if @invalid_email %>
+  $('#choosepalModal .alert-danger').removeClass('hidden');
+<% else %>
+  $('#choosepalModal').modal('hide');
+  $('#choosepalModal form')[0].reset();
+  $('header .alert').remove();
+  $('header').append('<%= j flash_messages_tag %>')
+<% end %>
+
