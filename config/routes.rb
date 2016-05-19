@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # user_root 'languages#index' 
   root 'home#land'
 
-  resources :languages, only: [:index, :new, :create]
+  resources :languages, only: [:index, :new, :create, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,4 +1,5 @@
 class LanguagesController < ApplicationController
+  before_action :fetch_language , only: [:show]
   def index
     @languages = Language.all
   end
@@ -16,10 +17,19 @@ class LanguagesController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
 
 
   private
       def language_params
         params.require(:language).permit(:name, :description)
       end 
+
+      def fetch_language
+        @language = Language.find(params[:id])
+
+      end
 end
