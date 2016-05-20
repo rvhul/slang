@@ -1,10 +1,62 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <!-- Custom fields added to devise -->
+
+
+    <div class="form-group">
+      <%= f.label :name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+          <%= f.text_field :name, class: "form-control",autofocus: true %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :is_female, "Gender", class: 'col-sm-2 control-label'  %>
+      <div class="col-sm-6">
+          <%= f.radio_button :is_female, true %> <%= f.label :is_female, "Female" %>
+          <%= f.radio_button :is_female, false %> <%= f.label :is_female, "Male" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :date_of_birth, class: 'col-sm-2 control-label'  %>
+      <div class="col-sm-6">
+          <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
+      </div>
+    </div>
+
+
+
+     <!-- ------------------------------------------------------------------ -->
+
+    <!-- <div><%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %></div>
+
+    <div><%= f.check_box :is_female, {}, true %> <%= f.label :is_female, "Female" %> </div>
+    <div><%= f.check_box :is_female, {}, false %> <%= f.label :is_female, "Male" %> </div>
+
+    <%= f.radio_button :is_female, '1' %> <%= f.label :is_female, "Female" %>
+          <%= f.radio_button :is_female, '0' %> <%= f.label :is_female, "Male" %>
+
+    <div><%= f.label :date_of_birth %><br />
+        <%= f.date_select :date_of_birth %></div> -->
+
+
+        <!-- ------------------------------------------------------------ -->
+
+
+    <div class="form-group">
+      <%= f.label :email, required: true, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+          <%= f.email_field :email, class: 'form-control'  %>
+      </div>
+    </div>
+
+   
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
