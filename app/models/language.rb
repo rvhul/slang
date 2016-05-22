@@ -15,8 +15,10 @@ class Language < ActiveRecord::Base
   has_many :coachings
   has_many :users, through: :coachings
 
-  # belongs_to :user
-  # validates :user, presence: true
+  has_many :pending_pupil_coachings, ->{ where(accepted: false)}, class_name: Coaching.name 
+  has_many :accepted_pupil_coachings, ->{ where(accepted: true)}, class_name: Coaching.name 
+  has_many :accepted_mentor_coachings, ->{ where(accepted: true)}, class_name: Coaching.name
+ 
   validates :name, presence: true
 
 

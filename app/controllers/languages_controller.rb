@@ -20,11 +20,10 @@ class LanguagesController < ApplicationController
 
   def show
     @coaching = Coaching.new
-    @pending_pupil_coaching_requests = current_user.pending_pupil_coachings
-    @accepted_pupil_coaching_requests = current_user.accepted_pupil_coachings
+    @pending_pupil_coaching_requests = @language.pending_pupil_coachings.where(pupil: current_user)
+    @accepted_pupil_coaching_requests = @language.accepted_pupil_coachings.where(pupil: current_user)
 
-    @pending_mentor_coaching_requests = current_user.pending_mentor_coachings
-    @accepted_mentor_coaching_requests = current_user.accepted_mentor_coachings
+    @accepted_mentor_coaching_requests = @language.accepted_mentor_coachings.where(mentor: current_user)
 
 
   end

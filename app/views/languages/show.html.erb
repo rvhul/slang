@@ -25,9 +25,10 @@
 
 <% if @accepted_mentor_coaching_requests.any? %>
   <div id="accepted-mentor-requests">
-    <h3>Your <%= @language.name %> pals are</h3>
+    <h3>Your are mentoring <%= @language.name %> for</h3>
     <%@accepted_mentor_coaching_requests.each do |request| %>
-    <%= request.pupil.email %>
+
+    <%= request.pupil.email %> <br>
     <%end %>
   </div>
 <%end %>

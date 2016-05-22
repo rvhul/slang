@@ -9,7 +9,7 @@ class CoachingsController < ApplicationController
       if @mentor.nil?
         # Send an invitation request to mentor to join the app
 
-      elsif @mentor.teaching?(@language)
+      elsif @mentor.teaching?(@language,current_user)
         flash.now[:danger] = I18n.t 'flash_messages.coachings.already_invited'
       else
         create_invitation
