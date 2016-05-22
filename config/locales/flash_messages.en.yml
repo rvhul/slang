@@ -1,5 +1,6 @@
 en:
   flash_messages:
     coachings:
-      already_invited: "This mentor is pending your request"
-      invite_success: "Mentor successfully invited"
+      already_invited: "This mentor is pending your request or you already requested"
+      invite_success: "Mentor successfully requested"
+      accepted_success: "Pupil request accepted"

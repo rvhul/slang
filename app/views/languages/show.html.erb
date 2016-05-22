@@ -2,6 +2,36 @@
 
 
 <%= link_to "Add A Lang-Pal!", "#", class:"btn btn-success pull-right", data:{toggle:"modal", target:"#choosepalModal"} %>
+<%  if @pending_pupil_coaching_requests.any? %>
+  <div id="sent-pupil-requests">
+    <h3>You sent <%= @pending_pupil_coaching_requests.count %> request for learning <%= @language.name %> to </h3>
+      <%@pending_pupil_coaching_requests.each do |request| %>
+      <%= request.mentor.email %>
+      <%= link_to "Cancel Request", "#", class: "btn btn-danger" %>
+      <%end %>
+  </div>
+
+<%end %>
+
+<% if@accepted_pupil_coaching_requests.any? %>
+  <div id="accepted-pupil-requests">
+    <h3>Your <%= @language.name %> pals are </h3>
+    <%@accepted_pupil_coaching_requests.each do |request| %>
+    <%= request.mentor.email %>
+    <% end %>
+  </div>
+<%end %>
+
+
+<% if @accepted_mentor_coaching_requests.any? %>
+  <div id="accepted-mentor-requests">
+    <h3>Your <%= @language.name %> pals are</h3>
+    <%@accepted_mentor_coaching_requests.each do |request| %>
+    <%= request.pupil.email %>
+    <%end %>
+  </div>
+<%end %>
+
 
 
 

@@ -19,6 +19,9 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  date_of_birth          :datetime
+#  is_female              :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -26,8 +29,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :coachings
+   
   has_many :languages, through: :coachings
+  has_many :accepted_pupil_coachings, -> { where(accepted: true)}, foreign_key: :pupil_id,class_name: Coaching.name
+  has_many :pending_pupil_coachings, ->{ where(accepted: false)}, foreign_key: :pupil_id, class_name: Coaching.name 
+
+  has_many :accepted_mentor_coachings, ->{ where(accepted: true)}, foreign_key: :mentor_id, class_name: Coaching.name
+  has_many :pending_mentor_coachings, ->{ where(accepted: false)}, foreign_key: :mentor_id, class_name: Coaching.name
+  
 
   def teaching?(lang)
     Coaching.where(language: lang, mentor: self.id).any?

@@ -1,7 +1,8 @@
 class LanguagesController < ApplicationController
   before_action :fetch_language , only: [:show]
   def index
-    @languages = Language.all
+    @languages = Language.all   
+    @pending_mentor_coaching_requests = current_user.pending_mentor_coachings
   end
 
   def new
@@ -19,6 +20,13 @@ class LanguagesController < ApplicationController
 
   def show
     @coaching = Coaching.new
+    @pending_pupil_coaching_requests = current_user.pending_pupil_coachings
+    @accepted_pupil_coaching_requests = current_user.accepted_pupil_coachings
+
+    @pending_mentor_coaching_requests = current_user.pending_mentor_coachings
+    @accepted_mentor_coaching_requests = current_user.accepted_mentor_coachings
+
+
   end
 
 private

@@ -1,3 +1,10 @@
+<% if @pending_mentor_coaching_requests.any? %>
+  <div id="authorship-invitations" class="well">
+    <h3>Coaching invitations pending your approval</h3>
+    <%= render @pending_mentor_coaching_requests %>
+  </div>
+<% end %>
+    
 
 <div class="container">
 

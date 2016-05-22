@@ -1,5 +1,6 @@
 class CoachingsController < ApplicationController
   before_action :fetch_language
+  before_action :fetch_coaching, only: [:update, :destroy]
   def create
     @new_coaching = @language.coachings.new 
     mentor_email = params[:coaching][:mentor_email]
@@ -18,9 +19,20 @@ class CoachingsController < ApplicationController
     end 
   end
 
+  def update
+    @coaching.update_attribute(:accepted, true)
+    flash[:success] = I18n.t 'flash_messages.coachings.accepted_success'
+    redirect_to root_path
+  end
+
 private
     def fetch_language
       @language = Language.find(params[:language_id])
+    end
+
+    def fetch_coaching
+      @coaching= @language.coachings.find(params[:id])
+
     end
 
     def create_invitation

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root 'home#land'
 
   resources :languages, only: [:index, :new, :create, :show] do
-    resources :coachings, only: [:create]
+    resources :coachings, only: [:create,:update, :destroy]
   end
 
   # Example of regular route:
