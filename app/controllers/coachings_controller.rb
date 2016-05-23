@@ -4,7 +4,7 @@ class CoachingsController < ApplicationController
   def create
     @new_coaching = @language.coachings.new 
     mentor_email = params[:coaching][:mentor_email]
-    if ValidateEmail.validate(mentor_email)      
+    if ValidateEmail.validate(mentor_email) && mentor_email != current_user.email   
       @mentor = User.where(email: mentor_email).first
       if @mentor.nil?
         # Send an invitation request to mentor to join the app
@@ -37,7 +37,7 @@ private
 
     def create_invitation
       @new_coaching.pupil = current_user
-      @new_coaching.mentor = @mentor 
+      @new_coaching.mentor = @mentor
       @new_coaching.save!
       flash.now[:success] = I18n.t 'flash_messages.coachings.invite_success'
     end

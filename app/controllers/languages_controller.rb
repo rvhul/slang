@@ -25,6 +25,7 @@ class LanguagesController < ApplicationController
 
     @accepted_mentor_coaching_requests = @language.accepted_mentor_coachings.where(mentor: current_user)
 
+    
 
   end
 

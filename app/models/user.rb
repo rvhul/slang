@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
    
-  has_many :languages, through: :coachings
+  has_many :languages
   # has_many :accepted_pupil_coachings, -> { where(accepted: true)}, foreign_key: :pupil_id,class_name: Coaching.name
   # has_many :pending_pupil_coachings, ->{ where(accepted: false)}, foreign_key: :pupil_id, class_name: Coaching.name 
 

@@ -1,7 +1,19 @@
-<%= @language.name %>
+<div class="panel panel-default">
+  <div class= "panel-heading">
+  <%= @language.name %>
+  </div>
+</div>
 
 
 <%= link_to "Add A Lang-Pal!", "#", class:"btn btn-success pull-right", data:{toggle:"modal", target:"#choosepalModal"} %>
+
+<div id="mentors" >
+  <h4>There are <%= @language.mentors.uniq.count %> mentors for this language</h4>
+    <% @language.mentors.uniq.each do |mentor| %>
+      <%= mentor.email %><br>
+    <% end %>
+</div>
+
 <%  if @pending_pupil_coaching_requests.any? %>
   <div id="sent-pupil-requests">
     <h3>You sent <%= @pending_pupil_coaching_requests.count %> request for learning <%= @language.name %> to </h3>
@@ -14,7 +26,7 @@
 <%end %>
 
 <% if@accepted_pupil_coaching_requests.any? %>
-  <div id="accepted-pupil-requests">
+  <div id="accepted-pupil-requests" >
     <h3>Your <%= @language.name %> pals are </h3>
     <%@accepted_pupil_coaching_requests.each do |request| %>
     <%= request.mentor.email %>
@@ -47,7 +59,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@language, @coaching], remote: true do |f|%>
-        <div class="alert alert-danger hidden" role="alert">Please enter a valid email address</div>
+        <div class="alert alert-danger hidden" role="alert">Please enter a valid mentor email address,don't invite yourself!</div>
         <%= f.input :mentor_email, label: 'Enter Mentor Email you like to learn from', placeholder: 'user@domain.com' %>
         <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
