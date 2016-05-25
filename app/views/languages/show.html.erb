@@ -8,7 +8,7 @@
 <%= link_to "Add A Lang-Pal!", "#", class:"btn btn-success pull-right", data:{toggle:"modal", target:"#choosepalModal"} %>
 
 <div id="mentors" >
-  <h4>There are <%= @language.mentors.uniq.count %> mentors for this language</h4>
+  <h4>There are currently <b><%= @language.mentors.uniq.count %></b> mentors for this language</h4>
     <% @language.mentors.uniq.each do |mentor| %>
       <%= mentor.email %><br>
     <% end %>

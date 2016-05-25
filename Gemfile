@@ -19,7 +19,6 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'ValidateEmail'
 
-
 group :development, :test do
   gem 'byebug'
   gem 'annotate'

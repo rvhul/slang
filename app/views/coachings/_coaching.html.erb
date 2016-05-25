@@ -3,18 +3,14 @@
   <div id="coaching">
     <div class="actions pull-right">
       <%= link_to "Accept", language_coaching_path(coaching.language,coaching),method: :patch, class: "btn btn-success btn-sm" %>
-      <%= link_to "Reject", language_coaching_path(coaching.language,coaching),method: :delete, class: "btn btn-danger btn-sm" %>
+      <%= link_to "Reject", language_coaching_path(coaching.language,coaching),method: :delete, class: "btn btn-primary btn-sm" %>
     </div>
     <h4>
-    You received mentoring request for <%= coaching.language.name %>
+    <i><%= coaching.mentor.email %></i>, you have received a mentoring request to teach <b><%= coaching.language.name %></b> to <i><%= coaching.pupil.email %>(replace with name or email)</i>
     </h4>
     <p><%= coaching.language.description %></p>
     <p>
-      Sent by: <%= coaching.pupil.email %> at <%= coaching.created_at.strftime("%v") %>
+      Sent on: <%= coaching.created_at.strftime("%v") %>
     </p>
-    
+
   </div>
-
-
-
-      

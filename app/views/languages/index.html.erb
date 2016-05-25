@@ -1,17 +1,33 @@
 <% if @pending_mentor_coaching_requests.any? %>
   <div id="authorship-invitations" class="well">
-    <h3>Coaching invitations pending your approval</h3>
+    <h3>Pending Mentorship Requests</h3>
     <%= render @pending_mentor_coaching_requests %>
   </div>
 <% end %>
-    
+
 
 <div class="container">
 
-  <%= link_to "Add a language", new_language_path, class: "btn btn-primary btn-md pull-right" %>
   <row id="languages">
     <div class="col-md-4" id="language">
       <%= render @languages %>
     </div>
+    <div class="col-md-8">
+      <%= link_to "Add a language", new_language_path, class: "btn btn-info btn-md pull-right" %>
+    </div>
   </row>
 </div>
+
+<!--
+
+<div class="modal fade" id="addLanguage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choose a Lang-Pal</h4>
+      </div>
+    </div>
+  </div>
+</div>
+, data:{toggle:"modal", target:"#addLanguage"} -->
